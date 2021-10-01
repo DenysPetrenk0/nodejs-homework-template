@@ -11,7 +11,7 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
-    "comma-dangle": "off",
+    "comma-dangle": "on",
     "space-before-function-paren": "off",
     quotes: [2, "double", { avoidEscape: true }],
   },
