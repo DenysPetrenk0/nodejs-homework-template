@@ -1,7 +1,7 @@
 /** @format */
 
-const sendSuccessReq = require("./sendSuccessReq");
+const sendSuccess = require("./sendSuccess");
 
 module.exports = {
-  sendSuccessReq,
+  sendSuccess,
 };
