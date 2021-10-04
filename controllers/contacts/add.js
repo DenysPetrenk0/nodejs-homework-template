@@ -1,10 +1,10 @@
 /** @format */
 const { Contact } = require("../../models");
-const { sendSuccessReq } = require("../../helpers");
+const { sendSuccess } = require("../../helpers");
 
 const add = async (req, res) => {
   const result = await Contact.create(req.body);
-  sendSuccessReq(res, { result }, 201);
+  sendSuccess({ res, data: { result }, status: 201 });
 };
 
 module.exports = add;

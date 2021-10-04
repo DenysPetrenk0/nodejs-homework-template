@@ -1,7 +1,7 @@
 /** @format */
 const { NotFound } = require("http-errors");
 const { Contact } = require("../../models");
-const { sendSuccessReq } = require("../../helpers");
+const { sendSuccess } = require("../../helpers");
 
 const updateById = async (req, res) => {
   const { contactId } = req.params;
@@ -9,7 +9,7 @@ const updateById = async (req, res) => {
   if (!result) {
     throw new NotFound("Not found");
   }
-  sendSuccessReq(res, { result });
+  sendSuccess({ res, data: { result } });
 };
 
 module.exports = updateById;

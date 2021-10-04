@@ -2,7 +2,7 @@
 
 const { NotFound } = require("http-errors");
 const { Contact } = require("../../models");
-const { sendSuccessReq } = require("../../helpers");
+const { sendSuccess } = require("../../helpers");
 
 const removeById = async (req, res) => {
   const { contactId } = req.params;
@@ -10,9 +10,12 @@ const removeById = async (req, res) => {
   if (!result) {
     throw new NotFound("Not found");
   }
-  sendSuccessReq(res, {
-    result,
-    message: "Success remove contact",
+  sendSuccess({
+    res,
+    data: {
+      result,
+      message: "Success remove contact",
+    },
   });
 };
 
