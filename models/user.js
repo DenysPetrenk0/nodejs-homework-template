@@ -4,6 +4,7 @@ const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { Schema, model } = require("mongoose");
+const { generate } = require("shortid");
 
 const userSchema = Schema(
   {
@@ -25,6 +26,15 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verifyToken: {
+      type: String,
+      required: [true, "Verify token is required"],
+    },
+
     avatarURL: String,
   },
   { versionKey: false, timestamps: true }
@@ -40,6 +50,10 @@ userSchema.methods.comparePassword = function (password) {
 
 userSchema.methods.setDefaultAvatar = function (avatar) {
   this.avatarURL = avatar;
+};
+
+userSchema.methods.setVerifyToken = function (password) {
+  this.verifyToken = generate();
 };
 
 const { SECRET_KEY } = process.env;
